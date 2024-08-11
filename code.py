@@ -73,10 +73,6 @@ def execute_payload(request: Request):
     else:
         return Response(request, "Invalid payload selected.", content_type='text/html')
 
-    # Check if the script exists
-    if not os.path.exists(script_path):
-        return Response(request, "Payload file not found.", content_type='text/html')
-
     # Execute the selected payload script
     try:
         result_message = f"Executed {payload}.py successfully."
