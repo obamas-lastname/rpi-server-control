@@ -57,30 +57,12 @@ def webpage():
         <form action="/execute" method="post">
             <button type="submit" name="payload" value="payload2">Execute Payload 2</button>
         </form>
+        <form action="/execute" method="post">
+            <button type="submit" name="payload" value="payload">Execute WinPeas</button>
+        </form>
     </body>
     </html>
     """
-
-def base(request: Request):
-    return Response(request, webpage(), content_type='text/html')
-
-def execute_payload(request: Request):
-    payload = request.form_data.get("payload")
-    if payload == "payload1":
-        runScript("payload1.py")
-    elif payload == "payload2":
-        runScript("payload2.py")
-    else:
-        return Response(request, "Invalid payload selected.", content_type='text/html')
-
-    # Execute the selected payload script
-    try:
-        result_message = f"Executed {payload}.py successfully."
-    except Exception as e:
-        result_message = f"Error executing {payload}.py: {str(e)}"
-
-    return Response(request, f"{webpage()}<p>{result_message}</p>", content_type='text/html')
-
 #### Server start ####
 def server_start():
     # WiFi credentials
@@ -110,7 +92,9 @@ def server_start():
     @server.route("/execute", methods=[POST])
     def execute_payload(request: Request):
         payload = request.form_data.get("payload")
-        if payload == "payload1":
+        if payload == "payload":
+            runScript("payload.py")
+        elif payload == "payload1":
             runScript("payload1.py")
         elif payload == "payload2":
             runScript("payload2.py")
