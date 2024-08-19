@@ -41,16 +41,88 @@ def runScript(file):
 def webpage():
     return """
     <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Pico W Payload Selector</title>
-        <style>
-            body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-            button { font-size: 20px; padding: 10px 20px; margin: 10px; }
-        </style>
-    </head>
-    <body>
-        <h1>Pico W Payload Selector</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pico W Payload Selector</title>
+    <style>
+        /* Dark, sleek background with a subtle gradient */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background: linear-gradient(135deg, #1b1b1b, #2c2c2c);
+            color: #00ff00;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        /* Form container with space between buttons */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        form {
+            margin: 0;
+        }
+
+        /* Button styling: professional, sleek, and modern */
+        button {
+            background-color: #000;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            margin: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            transition: all 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #00ff00;
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+            border-color: #00ff00;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .form-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Pico W Payload Selector</h1>
+    <div class="form-container">
         <form action="/execute" method="post">
             <button type="submit" name="payload" value="payload1">Execute Payload 1</button>
         </form>
@@ -60,8 +132,10 @@ def webpage():
         <form action="/execute" method="post">
             <button type="submit" name="payload" value="payload">Execute WinPeas</button>
         </form>
-    </body>
-    </html>
+    </div>
+</body>
+</html>
+
     """
 #### Server start ####
 def server_start():
